@@ -3,6 +3,8 @@ import type { CSSProperties, ReactNode } from "react";
 import type { L10n } from "./doc-labels";
 import type { DateVariant } from "./format";
 import type { DocLang } from "./types";
+import ctripLogo from "../assets/ctrip.png";
+import qunarLogo from "../assets/qunar.jpg";
 import { cn } from "../lib/utils";
 import { docText } from "./doc-labels";
 import { formatDate, formatMoney, formatWeekday } from "./format";
@@ -156,57 +158,24 @@ export function CtripBrand({
 	size?: "md" | "lg"
 	inverted?: boolean
 }) {
-	const dim = size === "lg" ? "h-12 w-12 text-[22px]" : "h-9 w-9 text-base";
+	const imgH = size === "lg" ? "h-12" : "h-9";
+	// The logo lockup is blue on transparency, so on the blue header band it
+	// sits inside a white chip to stay legible.
+	if (inverted) {
+		return (
+			<span className="inline-flex items-center rounded-lg bg-white px-4 py-2">
+				<img src={ctripLogo} alt="携程旅行 Ctrip" className={`${imgH} w-auto object-contain`} />
+			</span>
+		);
+	}
 	return (
-		<span className="inline-flex items-center gap-2.5">
-			<span
-				className={cn(
-					"inline-flex items-center justify-center rounded-[10px] font-bold",
-					dim,
-				)}
-				style={{
-					background: inverted ? "#ffffff" : C.ctripBlue,
-					color: inverted ? C.ctripBlue : "#ffffff",
-				}}
-			>
-				携
-			</span>
-			<span className="flex flex-col leading-none">
-				<span
-					className={cn("font-extrabold", size === "lg" ? "text-[26px]" : "text-[19px]")}
-					style={{ color: inverted ? "#ffffff" : C.ctripBlue }}
-				>
-					携程旅行
-				</span>
-				<span
-					className="mt-1 text-[9px] font-semibold tracking-[0.28em]"
-					style={{ color: inverted ? "rgba(255,255,255,.75)" : "#7d8590" }}
-				>
-					CTRIP.COM
-				</span>
-			</span>
-		</span>
+		<img src={ctripLogo} alt="携程旅行 Ctrip" className={`${imgH} w-auto object-contain`} />
 	);
 }
 
 export function QunarBrand() {
 	return (
-		<span className="inline-flex items-center gap-2.5">
-			<span
-				className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] text-base font-bold text-white"
-				style={{ background: "#06b9d6" }}
-			>
-				去
-			</span>
-			<span className="flex flex-col leading-none">
-				<span className="text-[20px] font-extrabold tracking-wide text-[#1f2329]">
-					去哪儿旅行
-				</span>
-				<span className="mt-1 text-[9px] font-semibold tracking-[0.34em] text-[#7d8590]">
-					QUNAR.COM · 总有你要的低价
-				</span>
-			</span>
-		</span>
+		<img src={qunarLogo} alt="去哪儿旅行 Qunar" className="h-10 w-auto object-contain" />
 	);
 }
 

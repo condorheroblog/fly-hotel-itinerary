@@ -1,4 +1,5 @@
 import type { DocLang, FlightData, FlightSegment } from "../types";
+import tripComLogo from "../../assets/trip-com.svg";
 import { L } from "../doc-labels";
 import { formatDuration, formatIssueDateTime, formatMoney } from "../format";
 import {
@@ -198,10 +199,13 @@ export default function TripComTemplate({ data, lang }: { data: FlightData, lang
 	return (
 		<div className="doc-stage px-12 py-12 font-sans text-[14px] text-[#1f2329]">
 			{/* header */}
-			<div className="whitespace-nowrap text-[13px] text-[#3d4450]">
-				<DT pair={L.bookingNo} lang={lang} inline />
-				{" "}
-				<span className="font-semibold text-[#1f2329]">{data.bookingNo}</span>
+			<div className="flex items-center justify-between gap-4">
+				<img src={tripComLogo} alt="Trip.com" className="h-10 w-auto object-contain" />
+				<div className="whitespace-nowrap text-[13px] text-[#3d4450]">
+					<DT pair={L.bookingNo} lang={lang} inline />
+					{" "}
+					<span className="font-semibold text-[#1f2329]">{data.bookingNo}</span>
+				</div>
 			</div>
 
 			<h1 className="mt-9 text-[28px] font-bold leading-tight">
