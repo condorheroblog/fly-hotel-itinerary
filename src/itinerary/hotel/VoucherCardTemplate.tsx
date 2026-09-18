@@ -24,19 +24,22 @@ function StayColumn({
 	timeRule: string
 	lang: DocLang
 }) {
+	// `whitespace-nowrap` keeps every line atomic: snapDOM freezes element
+	// widths at capture time, so a slightly wider export font could otherwise
+	// wrap the date and paint over the line below in PNG/JPG output.
 	return (
 		<div className="flex flex-col items-center px-4 text-center">
-			<div className={labelCls}>
+			<div className={`${labelCls} whitespace-nowrap`}>
 				<DT pair={label} lang={lang} />
 			</div>
-			<div className="mt-2 text-[30px] font-bold leading-tight text-[#11151a]">
+			<div className="mt-2 whitespace-nowrap text-[30px] font-bold leading-tight text-[#11151a]">
 				<DD iso={iso} variant="full" lang={lang} />
 			</div>
-			<div className="mt-1 text-[13px] text-[#7d8590]">
+			<div className="mt-1 whitespace-nowrap text-[13px] text-[#7d8590]">
 				<DD iso={iso} variant="weekday" lang={lang} />
 			</div>
-			<div className="mt-1 text-[14px] font-medium text-[#1f2329]">{timeRule}</div>
-			<div className="mt-1 text-[12.5px] text-[#8f959e]">
+			<div className="mt-1 whitespace-nowrap text-[14px] font-medium text-[#1f2329]">{timeRule}</div>
+			<div className="mt-1 whitespace-nowrap text-[12.5px] text-[#8f959e]">
 				<DT pair={L.hotelLocalTime} lang={lang} />
 			</div>
 		</div>

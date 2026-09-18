@@ -61,7 +61,7 @@ export default function FlightPage() {
 	);
 
 	const [data, setData] = useLocalStorage<FlightData>(
-		`fhi-flight-v2:${templateId}`,
+		`fhi-flight-v3:${templateId}`,
 		cloneFlightSample(templateId),
 	);
 
